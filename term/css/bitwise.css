@@ -1,0 +1,18 @@
+@font-face {
+	font-family: 'bitwise';
+	src: url('./bitwise.eot');
+	src: local('bitwise'), url('./bitwise.woff') format('woff'), url('./bitwise.ttf') format('truetype');
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_58">Text with this font applied</p> */
+.terminal-wrapper {
+	font-family: 'bitwise' !important;
+	font-size:12pt;
+	line-height:13pt;
+}
+.terminal-wrapper span{
+	font-family: 'bitwise' !important;
+	font-size:12pt;
+	line-height:13pt;
+}
+
+/* Font downloaded from FontsForWeb.com */

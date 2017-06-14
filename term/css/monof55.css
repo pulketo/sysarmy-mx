@@ -1,0 +1,28 @@
+@font-face {
+	font-family: 'monof55';
+	src: url('./monof55.eot');
+	src: local('monof55'), url('./monof55.woff') format('woff'), url('./monof55.ttf') format('truetype');
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_368">Text with this font applied</p> */
+
+.terminal-wrapper {
+	font-family: 'monof55' !important;
+	font-size:12pt;
+	line-height:13pt;
+}
+.terminal-wrapper span{
+	font-family: 'monof55' !important;
+	font-size:12pt;
+	line-height:13pt;
+}
+
+/* Font downloaded from FontsForWeb.com */
+
+.terminal-output a{
+	color:#cc0;
+	font-size:12pt;
+
+
+
+}
+
