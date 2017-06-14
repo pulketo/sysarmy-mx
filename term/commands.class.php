@@ -182,72 +182,11 @@ class cmd
   }
 
  private function help($a=null){
-    $cmds = array("clear", "reset", "vars", "sysarmy", "mx", "art");
+    $cmds = array("clear", "reset", "vars", "sysarmy", "mx", "art", "cat", "");
     $commands = implode("\t", $cmds);
     $o = "";
   // cats, post, posts, torrent
     switch (@$a[1]){
-      /**
-        show
-      */
-      case "show" :
-        switch(@$a[2]){
-          case "cats":
-            $o = $this->manpage("show cats", 
-                            "list all categories", 
-                            "(has no arguments)", 
-                            array("- shows a list of current wp categories","if no current category (/root) selected, will show parent categories, if not, will show current category childs")
-                            );
-            break;
-          case "posts":
-            $o = $this->manpage("show posts", 
-                            "list all posts in current category (SEE ALSO: vars)", 
-                            "(has no arguments)", 
-                            array("- shows a list of posts matching current category"),
-                            array("SEE ALSO"=>"use command \"vars\" in order to know which category you are in")
-                            );
-            break;
-          case "post":
-            $o = $this->manpage("show post", 
-                            "show post matching postID", 
-                            "show post <postID>", 
-                            array("- shows contents of post referenced by postID")
-                            );
-            break;
-          case "torrent":
-            $o = $this->manpage("show torrent", 
-                            "will echo current movie torrent", 
-                            "(has no arguments)", 
-                            array("- will send the spiders to get current post torrent")
-                            );
-            break;
-          default:
-            $o .= "syntax>\r\n\thelp show <subject>\r\n";
-            $o .= "subjects>\r\n\tcats     posts    post    **hidden**";            
-            break;          
-        }
-        break;
-      /**
-        select
-      */
-      case "select":
-        switch(@$a[2]){
-          case "cat":
-          case "category":
-            $o = $this->manpage("select cat", 
-                            "will change to a certaing category id.", 
-                            "select cat <cat ID> or select cat /",
-                            array("Will change \"current\" category to certain category id, so other commads depending on \"current\" category will do things accordingly"),
-                            array("SEE ALSO"=>"use command \"vars\" in order to know which category you are in", ""=>"use command \"show cats\" to show current available categories")
-
-                            );
-            break;
-          default:
-            $o .= "syntax>\r\n\thelp select <subject>\r\n";
-            $o .= "subjects>\r\n\tcat     **hidden**    **hidden**    **hidden**";            
-            break; 
-        }
-        break;
       /**
         vars
       */
@@ -264,9 +203,6 @@ class cmd
             break; 
         }
         break;
-      /**
-        search
-      */
       default:
           // $o .= "syntax>\r\n\t"."help [command]\r\n";
           $o .= "commands>\r\n".$commands;
@@ -470,6 +406,24 @@ $o ="SysArmyMX Logo";
         default:
           $t = "head -c".rand(300,600)." /dev/urandom | hexdump -C | grep \"[a-f][a-f]\"";
           $o = "Segmentation fault \r\n".trim(`$t`);
+          break;
+      }
+      $this->action = "echo";
+      $this->result = $o;
+    }
+
+    function scheme($args){
+      // will change colors... WIP
+      switch(@$args[1]){
+        case "--green-on-black":
+        case "--cyan-on-black":
+        case "--ambar-on-black":
+
+        break;
+
+        default:
+          $this->action = "css";
+          $this->result = $o;
           break;
       }
       $this->action = "echo";
