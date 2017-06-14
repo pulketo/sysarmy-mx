@@ -278,6 +278,9 @@ class cmd
         case "mx":
           $this->motd();
           break;
+        case "art":
+          $o = $this->manpage("art - outputs some ascii art to screen", "art <tux | sysarmy | ...>");
+          break;
         default:
           $o = "What manual page do you want?";
           $this->action = "echo";      
@@ -422,8 +425,11 @@ _)      \.___.,|     .'
      ";
 
           break;
+        case "sysarmy":
+$o ="SysArmyMX Logo";
+          break;
         default:
-          $o = "which art?";
+          $o = "art <tux | sysarmy | more soon...>";
           break;
       }
       $this->action = "echo";
