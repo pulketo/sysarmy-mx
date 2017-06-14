@@ -115,8 +115,9 @@ $( document ).ready(function() {
 });
 </script>
 <div style="postion:fixed;top:0px;left:30px;" id="valid-urls">
-	<a target="_BLANK" id="irc" href="http://webchat.freenode.net/?channels=#sysarmymx">irc</a>
-	<a id="normaluser" href="http://sysarmy.mx/index.html">html</a>
+	<ul>
+		<li><a id="normaluser" href="//sysarmy.mx/index.html">html</a></li>		
+		<li><a target="_BLANK" id="irc" href="//webchat.freenode.net/?channels=#sysarmymx">irc</a></li>
 </div>
 </HTML>
  

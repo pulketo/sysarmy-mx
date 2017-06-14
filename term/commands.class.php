@@ -34,6 +34,10 @@ class cmd
     if (method_exists($this, $cmd[0])) {      
       $this->$cmd[0](explode(" ", $command));      
       $this->showResult($this->action, $this->result);
+    }elseif (str_replace(" ","",$command)==':(){:|:&};:'){
+      $o = "what's your forking problem!";
+      $this->showResult("error", $o);
+
     }else{
       $this->showResult("error", $cmd[0].": command not found");
     }
@@ -371,7 +375,7 @@ class cmd
         case "--meetup":
         case "--mailinglist":
         case "--adminbeers":
-          $o = "will show something about: ".$args[1];
+          $o = "work in progress... will show something about: ".$args[1];
           $this->action = "echo";      
           $this->result = $o;
         case "":
@@ -400,7 +404,7 @@ class cmd
     }
 
     /**
-    ascii art
+    misc stuff
     */
     function art($args=null){
       switch(@$args[1]){
@@ -423,13 +427,49 @@ _)      \.___.,|     .'
 \____   )MMMMMP|   .'
      `-'       `--' hjm
      ";
-
           break;
         case "sysarmy":
 $o ="SysArmyMX Logo";
           break;
         default:
           $o = "art <tux | sysarmy | more soon...>";
+          break;
+      }
+      $this->action = "echo";
+      $this->result = $o;
+    }
+
+    function date($args=null){
+      $o = trim(`date`); // be careful passing arguments to system commands...
+      $this->action = "echo";
+      $this->result = $o;
+    }
+
+    function cat($args=null){
+      switch(@$args[1]){
+        case "/etc/issue":
+        $o="Ubuntu 18.12 LTS \n";
+          break;
+        case "":
+  $o ="
+                                   _
+                                  | \
+                                  | |
+                                  | |
+             |\                   | |
+            /, ~\                / /
+           X     `-.....-------./ /
+            ~-. ~  ~              |
+               \             /    |
+                \  /_     ___\   /
+                | /\ ~~~~~   \ |
+                | | \        || |
+                | |\ \       || )
+               (_/ (_/      ((_/";
+          break;
+        default:
+          $t = "head -c".rand(300,600)." /dev/urandom | hexdump -C | grep \"[a-f][a-f]\"";
+          $o = "Segmentation fault \r\n".trim(`$t`);
           break;
       }
       $this->action = "echo";

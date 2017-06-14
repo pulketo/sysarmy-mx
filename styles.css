@@ -44,4 +44,16 @@ blockquote {padding-left:6em;}
 
 } 
 
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: transparent;
+}
+
+li {
+    float: left;
+    margin:0 20px;
+}
 
