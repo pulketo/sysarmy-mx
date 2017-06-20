@@ -417,7 +417,7 @@ class cmd
       $what = implode(" ", $args);
       $what = preg_replace('#[^a-zA-Z_\ ]#', '', $what);
       $font = trim(`ls /usr//share/figlet  | grep flf | sed 's/\.flf$//g' | sort -R | head -n1`);
-      $o = "\r\n".(`echo -ne "$what" | figlet -w 80 -l -f "$font"`); 
+      $o = "\r\n".(`echo -ne "$what" | figlet -w 160 -l -f "$font"`); 
       $this->action = "echo";
       $this->result = $o;
     }
