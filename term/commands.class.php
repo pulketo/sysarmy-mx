@@ -267,7 +267,8 @@ class cmd
     }
 
     private function login(){      
-      $_SESSION['last-connection'] = date("Ymd-His")." from: ".$_SERVER['HTTP_X_FORWARDED_FOR'];
+      $from = isset($_SERVER['HTTP_X_FORWARDED_FOR'])?$_SERVER['HTTP_X_FORWARDED_FOR']:"Unknown";
+      $_SESSION['last-connection'] = date("Ymd-His")." from: ".$from;
       $this->motd();
     }
 
@@ -399,27 +400,24 @@ class cmd
         $o="Ubuntu 18.12 LTS \n";
           break;
         case "":
-  $o ="
-                                   _
-                                  | \
-                                  | |
-                                  | |
-             |\                   | |
-            /, ~\                / /
-           X     `-.....-------./ /
-            ~-. ~  ~              |
-               \             /    |
-                \  /_     ___\   /
-                | /\ ~~~~~   \ |
-                | | \        || |
-                | |\ \       || )
-               (_/ (_/      ((_/";
+          $o = file_get_contents("art/cat-1.txt");
+
           break;
         default:
           $t = "head -c".rand(300,600)." /dev/urandom | hexdump -C | grep \"[a-f][a-f]\"";
           $o = "Segmentation fault \r\n".trim(`$t`);
           break;
       }
+      $this->action = "echo";
+      $this->result = $o;
+    }
+
+    function banner($args=null){
+      $a = array_shift($args);
+      $what = implode(" ", $args);
+      $what = preg_replace('#[^a-zA-Z_\ ]#', '', $what);
+      $font = trim(`ls /usr//share/figlet  | grep flf | sed 's/\.flf$//g' | sort -R | head -n1`);
+      $o = "\r\n".(`echo -ne "$what" | figlet -w 80 -l -f "$font"`); 
       $this->action = "echo";
       $this->result = $o;
     }
