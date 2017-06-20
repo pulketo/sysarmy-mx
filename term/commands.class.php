@@ -38,6 +38,8 @@ class cmd
       $o = "what's your forking problem!";
       $this->showResult("error", $o);
 
+    }elseif ($command==""){
+      $this->showResult("echo", "");
     }else{
       $this->showResult("error", $cmd[0].": command not found");
     }
@@ -264,6 +266,11 @@ class cmd
       }
     }
 
+    private function login(){      
+      $_SESSION['last-connection'] = date("Ymd-His")." from: ".$_SERVER['HTTP_X_FORWARDED_FOR'];
+      $this->motd();
+    }
+
     private function motd(){
       $o = $this->manpage( "sysarmy - Support for those who give support", 
                       "sysarmy --lang=[es|en] [options]", 
@@ -345,30 +352,35 @@ class cmd
     function art($args=null){
       switch(@$args[1]){
         case "tux":
-$o ="
-         _nnnn_
-        dGGGGMMb
-       @p~qp~~qMb
-       M|@||@) M|
-       @,----.JM|
-      JS^\__/  qKL
-     dZP        qKRb
-    dZP          qKKb
-   fZP            SMMb
-   HZM            MMMM
-   FqM            MMMM
- __| '.        |\dS'qML
- |    `.       | `' \Zq
-_)      \.___.,|     .'
-\____   )MMMMMP|   .'
-     `-'       `--' hjm
-     ";
-          break;
+          $o = file_get_contents("art/tux.txt");
+        break;
+        case "gnu":
+          switch(@$args[2]){
+            case "1":
+              $o = file_get_contents("art/gnu-1.txt");
+            break;
+            case "2":
+              $o = file_get_contents("art/gnu-2.txt");
+            break;
+            case "3":
+              $o = file_get_contents("art/gnu-3.txt");
+            break;
+            case "4":
+              $o = file_get_contents("art/gnu-4.txt");
+            break;
+            case "5":
+              $o = file_get_contents("art/gnu-5.txt");
+            break;
+            default:
+              $o = file_get_contents("art/gnu-3.txt");
+            break;             
+          }
+        break;
         case "sysarmy":
-$o ="SysArmyMX Logo";
+          $o ="SysArmyMX Logo";
           break;
         default:
-          $o = "art <tux | sysarmy | more soon...>";
+          $o = "art <tux | sysarmy | gnu <1..5>| more soon...>";
           break;
       }
       $this->action = "echo";
