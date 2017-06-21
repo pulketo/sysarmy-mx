@@ -19,21 +19,21 @@
 		
 		
 		<meta charset="UTF-8" />
-		<meta property="fb:admins" content="ajolo" />
-		<meta property="og:description" content="Manpage for the Argentinian SysAdmin Community." />
-		<meta property="og:image" content="http://www.sysarmy.com.ar/images/logo.png" />
-		<meta property="og:site_name" content="sysarmy" />
+		<meta property="fb:admins" content="todo" />
+		<meta property="og:description" content="Manpage for the Mexican SysAdmin Community." />
+		<meta property="og:image" content="todo" />
+		<meta property="og:site_name" content="SysArmyMX" />
 		<meta property="og:title" content="sysarmy - Support for those who give support" />
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content="http://www.sysarmy.com.ar" />
+		<meta property="og:url" content="todo" />
 		<link rel="stylesheet" type="text/css" href="styles.css" />
 		
 		<meta name="twitter:card" content="summary_large_image">
-                <meta name="twitter:site" content="@sysarmy">
-                <meta name="twitter:creator" content="@sysarmy">
-                <meta name="twitter:title" content="sysarmy">
-                <meta name="twitter:description" content="sysarmy is the Argentinian SysAdmin Community, who brings together all IT professionals for knowledge exchange and fun. /j us ! ##sysarmy-en @ freenode">
-                <meta name="twitter:image:src" content="http://sysarmy.com.ar/ctrlc.jpg">
+                <meta name="twitter:site" content="todo">
+                <meta name="twitter:creator" content="todo">
+                <meta name="twitter:title" content="todo">
+                <meta name="twitter:description" content="sysarmyMX is the Mexicano SysAdmin Community, who brings together all IT professionals for knowledge exchange and fun. /j us ! ##sysarmy-en @ freenode">
+                <meta name="twitter:image:src" content="todo">
 
     <!-- jquery term -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -91,11 +91,7 @@
         });
     }, {
         greetings: 
-"<?php 
-	require_once( 'term/commands.class.php' );
-	$cmd = new cmd();	
-	$cmd->gimmemotd();
-?>",
+"",
         name: 'SysArmyMX',
         height: '95%',
         prompt: 'SysArmySH> '
@@ -105,13 +101,14 @@
     </script>
     <!-- jquery term --> 
 
-</HEAD><BODY style="background: transparent url(term/green-scanline.png) repeat fixed 0% 0% content-box;height:100%;">
+</HEAD>
+<BODY style="height:100%;">
 <!--Analytics-->
 <div id="term_demo" style="background:transparent;z-index:10000;position:fixed;top:30px;width:100%;">
 </div> 
 <script>
 $( document ).ready(function() {
-    jQuery("#term_demo").terminal().exec("motd");
+    jQuery("#term_demo").terminal().exec("login");
 });
 </script>
 <div style="postion:fixed;top:0px;left:30px;" id="valid-urls">

@@ -1,3 +1,8 @@
+body{
+	/*background: transparent url(../green-scanline.png) repeat fixed 0% 0% content-box*/;
+	background-color: #020;	
+}
+
 @font-face {
 	font-family: 'monof55';
 	src: url('./monof55.eot');
